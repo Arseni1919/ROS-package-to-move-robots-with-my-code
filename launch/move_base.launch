@@ -1,0 +1,108 @@
+<?xml version="1.0"?>
+<launch>
+
+   <!-- Name of the map to use (without path nor extension) and initial position -->
+  <arg name="map_file"       default=" $(find hamster_sim)/maps/DSA_map.yaml"/> <!-- robopark_plan -->
+  <arg name="world_file"     default=" $(find hamster_sim)/worlds/DSA_world.world"/>
+  <arg name="initial_pose_x" default="0.0"/>
+  <arg name="initial_pose_y" default="0.0"/>
+  <arg name="initial_pose_a" default="0.0"/>
+
+  <!-- <param name="/use_sim_time" value="true"/> -->
+  
+  <!--  ******************** Stage ********************  -->
+  <!-- 
+        Publishes transforms:
+          /base_link -> /base_laser
+          /base_footprint -> /base_link (identity)
+          /odom -> base_footprint
+        Publishes topics:
+          /odom : odometry data from the simulated odometry
+          /base_scan : laser data from the simulated laser
+          /base_pose_ground_truth : the ground truth pose
+        Parameters:
+          base_watchdog_timeout : time (s) after receiving the last command on cmd_vel before stopping the robot
+        Args:
+          -g : run in headless mode.
+  --> 
+  <!--
+  <node pkg="stage_ros" type="stageros" name="stageros" args="$(arg world_file)">
+    <param name="base_watchdog_timeout" value="0.5"/>
+    <remap from="odom" to="odom"/>
+    <remap from="base_pose_ground_truth" to="base_pose_ground_truth"/>
+    <remap from="cmd_vel" to="agent1/cmd_vel_raw"/>
+    <remap from="base_scan" to="agent1/scan"/>
+  </node>
+  -->
+  
+
+  
+  <!--  ****** Maps *****  -->
+  <!--
+  <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)">
+    <param name="frame_id" value="/map"/>
+  </node>
+  
+  
+  
+  
+  <include file="$(find my_code2)/launch/amcl.launch.xml">
+    <arg name="scan_topic" value="agent1/scan"/>
+    <arg name="use_map_topic" value="true"/>
+    <arg name="initial_pose_x" value="$(arg initial_pose_x)"/>
+    <arg name="initial_pose_y" value="$(arg initial_pose_y)"/>
+    <arg name="initial_pose_a" value="$(arg initial_pose_a)"/>
+  </include>
+  
+  -->
+  
+  <!--  ************** Navigation  ***************  -->
+  
+  <include file="$(find my_code2)/launch/move_base.launch.xml"/>
+  <!--
+  <rosparam file="$(find my_code2)/yaml/base_local_planner_params.yaml" command="load" />
+  <rosparam file="$(find my_code2)/yaml/global_costmap_params.yaml" command="load" /> 
+  -->
+  
+  
+  <!--  **************** Visualisation ****************  -->
+  <!--
+  <node name="rviz" pkg="rviz" type="rviz"/>
+  -->
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+ <!--- Run AMCL 
+    <include file="$(find amcl)/examples/amcl_diff.launch"/>
+
+
+   <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+    <rosparam file="$(find my_code2)/yaml/costmap_common_params.yaml" command="load" ns="global_costmap" /> 
+    <rosparam file="$(find my_code2)/yaml/costmap_common_params.yaml" command="load" ns="local_costmap" />
+    <rosparam file="$(find my_code2)/yaml/local_costmap_params.yaml" command="load" />
+    <rosparam file="$(find my_code2)/yaml/global_costmap_params.yaml" command="load" /> 
+    <rosparam file="$(find my_code2)/yaml/base_local_planner_params.yaml" command="load" />
+ </node>--> 
+ 
+</launch> 

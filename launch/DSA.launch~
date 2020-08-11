@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<launch>
+
+	<node pkg = "my_code2" type = "DSA_MST.py" name = "robot1" args = "1"/>
+	<!--
+	<node pkg = "my_code2" type = "DSA_MST.py" name = "robot2" args = "2"/>\
+	-->
+	<node pkg = "my_code2" type = "DSA_MST.py" name = "robot3" args = "3"/>
+	<!--
+	<node pkg = "my_code2" type = "DSA_MST.py" name = "robot4" args = "4"/>\
+	<node pkg = "my_code2" type = "DSA_MST.py" name = "robot5" args = "5"/>\
+	<node pkg = "my_code2" type = "DSA_MST.py" name = "robot6" args = "6"/>\
+	<node pkg = "my_code2" type = "DSA_MST.py" name = "robot7" args = "7"/>\
+	<node pkg = "my_code2" type = "DSA_MST.py" name = "robot8" args = "8"/>\
+	<node pkg = "my_code2" type = "DSA_MST.py" name = "robot9" args = "9"/>\
+	-->
+
+</launch>

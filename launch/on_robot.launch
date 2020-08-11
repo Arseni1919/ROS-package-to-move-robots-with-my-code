@@ -1,0 +1,13 @@
+<launch>
+
+    <arg name="robot_id" value="$(env HAMSTER_ID)" />
+
+    <node name="map_server_$(arg robot_id)" pkg="map_server" type="map_server" args="$(find hamster_server_launch)/maps/map.yaml" /> 
+
+    <include file="$(find mapping_controller)/launch/server_side.launch">
+	<arg name="robot_id" value="$(arg robot_id)" />
+        <arg name="map_file_path" value="$(find hamster_server_launch)/maps/" />
+	<arg name="map_server_name" value="map_server_$(arg robot_id)" />
+    </include>
+
+</launch>

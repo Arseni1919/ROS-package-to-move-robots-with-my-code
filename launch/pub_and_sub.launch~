@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<launch>
+	<!--
+	<node pkg = "my_code2" type = "position_publisher.py" name = "robot1"/>
+	<node pkg = "my_code2" type = "position_subscriber.py" name = "robot2"/>
+	-->
+	
+	<node pkg = "my_code2" type = "position.py" name = "robot1" args = "1"/>
+	<node pkg = "my_code2" type = "position.py" name = "robot2" args = "2"/>
+</launch>
